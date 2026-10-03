@@ -1,0 +1,35 @@
+# SHS Code Configuration — v4.4.0 E2E (real Agnes provider)
+# Workspace: the shs-agent-e2e-test repository clone.
+
+max_steps     = 24     # user-controlled budget for this run
+token_budget  = 0
+workspace_dir = "."
+
+[llm]
+provider = "universal"
+model    = "agnes-3.0-flash"
+base_url = "https://apihub.agnes-ai.com/v1"
+max_tokens   = 8192
+temperature  = 0.0
+max_retries  = 6
+timeout      = 1800
+
+[llm.rate_limit]
+enabled = true
+rpm     = 0
+
+[llm.streaming]
+enabled      = true
+buffer_size  = 4096
+chunk_timeout = 30
+
+[logging]
+console_level  = "INFO"
+
+[security]
+enabled = true
+analyzers = ["pattern", "rails"]
+confirmation_threshold = "never"
+
+[git_providers]
+default_provider = "github"
